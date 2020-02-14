@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from lojaServiceService WSDL service -->
+
+  <service name="lojaService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Store.App.loja.servico.fiap"/>
+      <parameter name="wsdlServiceElement" value="lojaServiceService"/>
+      <parameter name="schemaQualified" value="http://Store.App.loja.servico.fiap"/>
+      <parameter name="wsdlServicePort" value="lojaService"/>
+      <parameter name="className" value="fiap.servico.loja.App.Store.lojaService"/>
+      <parameter name="wsdlPortType" value="lojaService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Store.App.loja.servico.fiap" xmlns:retNS="http://Store.App.loja.servico.fiap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="consultaCod" qname="operNS:consultaCod" returnQName="retNS:consultaCodReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Store.App.loja.servico.fiap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cod" type="tns:long"/>
+      </operation>
+      <parameter name="allowedMethods" value="consultaCod"/>
+
+  </service>
+</deployment>
